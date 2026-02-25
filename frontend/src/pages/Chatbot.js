@@ -169,17 +169,19 @@ IMPORTANT: You are NOT a doctor. Always remind users to consult healthcare profe
 
      // Call our backend which calls Claude API
       const token = localStorage.getItem('token');
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          systemPrompt:  buildSystemPrompt(),
-          messages:      conversationHistory,
-        }),
-      });
+      const BASE_URL = process.env.REACT_APP_API_URL?.replace('/api', '') || '';
+
+const response = await fetch(`${BASE_URL}/api/chat`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+  },
+  body: JSON.stringify({
+    systemPrompt: buildSystemPrompt(),
+    messages: conversationHistory,
+  }),
+});
 
       const data = await response.json();
 
