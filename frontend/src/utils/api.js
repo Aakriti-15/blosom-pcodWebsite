@@ -16,9 +16,19 @@ API.interceptors.request.use((config) => {
 API.interceptors.response.use(
   (res) => res,
   (err) => {
+    // Only redirect to login if token is expired
+    // NOT when login credentials are wrong
     if (err.response?.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
+      const isAuthRoute =
+        err.config.url.includes('/auth/login') ||
+        err.config.url.includes('/auth/register');
+
+      // If it's a login/register attempt, just reject
+      // so the form's catch block handles the error toast
+      if (!isAuthRoute) {
+        localStorage.removeItem('token');
+        window.location.replace('/');
+      }
     }
     return Promise.reject(err);
   }
