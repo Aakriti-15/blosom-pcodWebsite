@@ -12,7 +12,8 @@ import SymptomLogger   from './pages/SymptomLogger';
 import Insights        from './pages/Insights';
 import Profile         from './pages/Profile';
 import NotFound from './pages/NotFound';
-
+import Chatbot from './pages/Chatbot';
+import Calendar from './pages/Calendar';
 
 function App() {
   return (
@@ -61,13 +62,16 @@ function App() {
               </ProtectedRoute>
             }
           >
+            
 
 
            <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="cycles"    element={<CycleTracker />}  />
+            <Route path="calendar" element={<Calendar />} />
             <Route path="symptoms"  element={<SymptomLogger />} />
             <Route path="insights"  element={<Insights />}       />
+            <Route path="chat" element={<Chatbot />} />
             <Route path="profile"   element={<Profile />}        />
           </Route>
 

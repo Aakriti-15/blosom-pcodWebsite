@@ -53,6 +53,8 @@ app.use('/api/cycles', require('./routes/cycles'));
 //symptom routes
 app.use('/api/symptoms', require('./routes/symptom'));
 
+app.use('/api/chat', require('./routes/chat'));
+
 
 // ─── 404 Handler ──────────────────────────────────
 // If someone hits a route that doesn't exist

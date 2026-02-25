@@ -6,8 +6,10 @@ import './Sidebar.css';
 const NAV_ITEMS = [
   { path: '/dashboard', icon: '🏠', label: 'Dashboard'      },
   { path: '/cycles',    icon: '🌙', label: 'Cycle Tracker'  },
+  { path: '/calendar',  icon: '📅', label: 'Calendar'       },
   { path: '/symptoms',  icon: '📋', label: 'Symptom Logger' },
   { path: '/insights',  icon: '📊', label: 'Insights'       },
+  { path: '/chat',      icon: '🤖', label: 'AI Assistant'   },
   { path: '/profile',   icon: '👤', label: 'Profile'        },
 ];
 
