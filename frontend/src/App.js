@@ -8,28 +8,9 @@ import Register from './pages/Register';
 import AppLayout from './components/layout/AppLayout';
 import Dashboard from './pages/Dashboard';
 import CycleTracker from './pages/CycleTracker';
-
-
-// Placeholder pages for now
-const ComingSoon = ({ name }) => (
-  <div className="loading-center">
-    <div style={{ textAlign: 'center' }}>
-      <div style={{ fontSize: 48, marginBottom: 16 }}>🌸</div>
-      <h2 style={{
-        fontFamily: 'Cormorant Garamond, serif',
-        fontSize: 32,
-        marginBottom: 8
-      }}>
-        {name}
-      </h2>
-      <p style={{ color: 'var(--text-muted)', fontSize: 14 }}>
-        Coming soon — we're building this next!
-      </p>
-    </div>
-  </div>
-);
-
-
+import SymptomLogger   from './pages/SymptomLogger';
+import Insights        from './pages/Insights';
+import Profile         from './pages/Profile';
 
 
 function App() {
@@ -83,10 +64,10 @@ function App() {
 
            <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="cycles"    element={<CycleTracker/>}  />
-            <Route path="symptoms"  element={<ComingSoon name="Symptom Logger" />} />
-            <Route path="insights"  element={<ComingSoon name="Insights" />}       />
-            <Route path="profile"   element={<ComingSoon name="Profile" />}        />
+            <Route path="cycles"    element={<CycleTracker />}  />
+            <Route path="symptoms"  element={<SymptomLogger />} />
+            <Route path="insights"  element={<Insights />}       />
+            <Route path="profile"   element={<Profile />}        />
           </Route>
 
 
