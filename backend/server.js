@@ -52,7 +52,7 @@ app.use('/api/cycles', require('./routes/cycles'));
 
 
 //symptom routes
-app.use('/api/symptoms', require('./routes/symptoms'));
+app.use('/api/symptoms', require('./routes/symptom'));
 
 
 // ─── 404 Handler ──────────────────────────────────
