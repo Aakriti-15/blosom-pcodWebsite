@@ -11,6 +11,7 @@ import CycleTracker from './pages/CycleTracker';
 import SymptomLogger   from './pages/SymptomLogger';
 import Insights        from './pages/Insights';
 import Profile         from './pages/Profile';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -73,7 +74,7 @@ function App() {
 
           {/* Catch all → redirect to login for now */}
           {/* (we'll add more routes in Day 7 onwards) */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
 
       </BrowserRouter>
