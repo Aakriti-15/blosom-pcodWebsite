@@ -18,8 +18,8 @@ const app = express();
 // Allow React frontend to talk to this backend
 app.use(cors({
   origin: [
-    'http://localhost:3000',
-    'https://your-frontend-name.onrender.com', // ← add this
+    "http://localhost:3000",
+    "https://blosom-frontend.onrender.com"
   ],
   credentials: true,
 }));
