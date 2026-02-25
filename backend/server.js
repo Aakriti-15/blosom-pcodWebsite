@@ -44,8 +44,7 @@ app.get('/api/health', (req, res) => {
 
 // Auth routes
 app.use('/api/auth', require('./routes/auth'));
-app.use(errorHandler);
-app.use('/api/auth', require('./routes/auth'));
+
 
 //cycle routes 
 app.use('/api/cycles', require('./routes/cycles'));
@@ -63,6 +62,8 @@ app.use((req, res) => {
     message: `Route ${req.originalUrl} not found`,
   });
 });
+
+app.use(errorHandler);
 
 // ─── Start Server ─────────────────────────────────
 const PORT = process.env.PORT || 5000;
