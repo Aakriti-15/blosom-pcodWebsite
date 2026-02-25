@@ -17,7 +17,10 @@ const app = express();
 // ─── Middleware ───────────────────────────────────
 // Allow React frontend to talk to this backend
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: [
+    'http://localhost:3000',
+    'https://your-frontend-name.onrender.com', // ← add this
+  ],
   credentials: true,
 }));
 
