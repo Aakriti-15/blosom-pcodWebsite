@@ -1,0 +1,329 @@
+/* ════════════════════════════════════════════
+   CYCLE TRACKER
+════════════════════════════════════════════ */
+
+/* ── Page Header ──────────────────────────────── */
+.cycle-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ── Prediction Card ──────────────────────────── */
+.cycle-prediction-card {
+  background: linear-gradient(
+    135deg,
+    #1a0a0f 0%,
+    #2d1018 50%,
+    #3d1a26 100%
+  );
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.cycle-prediction-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 90% 50%, rgba(244,63,94,0.18), transparent),
+    radial-gradient(ellipse 50% 60% at 10% 50%, rgba(217,70,239,0.10), transparent);
+}
+
+.cycle-prediction-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.cycle-pred-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cycle-pred-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.40);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 6px;
+}
+
+.cycle-pred-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.cycle-pred-date {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+}
+
+.cycle-pred-badge {
+  padding: 6px 16px;
+  background: rgba(251,113,133,0.15);
+  border: 1px solid rgba(251,113,133,0.25);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 500;
+  color: #fda4af;
+}
+
+/* ── Stat Cards Row ───────────────────────────── */
+.cycle-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+  .cycle-stats-row { grid-template-columns: 1fr; }
+}
+
+/* ── Cycle List ───────────────────────────────── */
+.cycle-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cycle-list-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cycle-item {
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  padding: 18px 22px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+}
+
+.cycle-item:hover {
+  border-color: var(--rose-100);
+  box-shadow: var(--shadow-sm);
+  transform: translateX(3px);
+}
+
+/* Flow dot indicator */
+.flow-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.flow-light    { background: #fda4af; color: #fda4af; }
+.flow-moderate { background: #fb7185; color: #fb7185; }
+.flow-heavy    { background: #e11d48; color: #e11d48; }
+.flow-spotting { background: #c4b5fd; color: #c4b5fd; }
+
+.cycle-item-dates { flex: 1; }
+
+.cycle-item-start {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cycle-item-end {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-top: 2px;
+}
+
+.cycle-item-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cycle-length-badge {
+  padding: 4px 12px;
+  background: var(--rose-50);
+  border: 1px solid var(--rose-100);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--rose-600);
+}
+
+.period-length-badge {
+  padding: 4px 12px;
+  background: var(--mauve-50);
+  border: 1px solid var(--mauve-100);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mauve-400);
+}
+
+.irregular-badge {
+  padding: 4px 12px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: #ea580c;
+}
+
+.cycle-item-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: var(--rose-50);
+  border-color: var(--rose-200);
+}
+
+.action-btn-delete:hover {
+  background: #fff1f2;
+  border-color: #fecdd3;
+}
+
+/* ── Modal ────────────────────────────────────── */
+.cycle-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.flow-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.flow-option {
+  padding: 10px 8px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: white;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.flow-option:hover {
+  border-color: var(--rose-200);
+  background: var(--rose-50);
+}
+
+.flow-option.selected {
+  border-color: var(--rose-400);
+  background: var(--rose-50);
+  color: var(--rose-600);
+}
+
+.flow-option-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* ── Delete Confirm ───────────────────────────── */
+.delete-confirm {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.delete-confirm p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.delete-confirm-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ── Empty State ──────────────────────────────── */
+.cycle-empty {
+  text-align: center;
+  padding: 60px 24px;
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border);
+}
+
+.cycle-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.cycle-empty h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.cycle-empty p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-weight: 300;
+  line-height: 1.7;
+}
